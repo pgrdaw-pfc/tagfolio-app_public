@@ -9,9 +9,9 @@ Permite clasificar y etiquetar imágenes, crear filtros complejos y generar info
 Los recursos pueden compartirse mediante URLs públicas, y el acceso se controla mediante roles (ADMIN, USER, ANONYMOUS).
 
 ## Requisitos
-- Linux Server with sudo privileges
+- Servidor Linux con privilegios de administrador (sudo) 
 - Git
-- Internet connection
+- Conexión a internet
 - Archivo `.env` configurado (ver `.env.example`)
 
 ## Despliegue local y entorno de pruebas (TEST)
