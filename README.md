@@ -24,9 +24,11 @@ Para desplegar Tagfolio en un entorno de pruebas local, se utiliza el script `de
 git clone https://github.com/pgrdaw-pfc/tagfolio-app_public.git
 cd tagfolio-app_public
 ```
-2. Comprobar que Docker está instalado y que el usuario tiene permisos:
+2. Crear el archivo de configuración `.env`:
 ```bash
-docker info
+cp .env.example .env
+nano .env
+# Editar DB_USER y DB_PASSWORD con las credenciales deseadas
 ```
 3. Ejecutar el despliegue TEST:
 ```bash
