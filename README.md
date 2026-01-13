@@ -5,14 +5,14 @@
 
 ## Descripción
 Tagfolio es una aplicación para la gestión de imágenes, filtros y generación de informes.  
-Permite clasificar y etiquetar imágenes, crear filtros y generar informes PDF.  
+Permite clasificar y etiquetar imágenes, crear filtros complejos y generar informes PDF.  
 Los recursos pueden compartirse mediante URLs públicas, y el acceso se controla mediante roles (ADMIN, USER, ANONYMOUS).
 
 ## Requisitos
-- Java 17 o superior  
-- Docker y Docker Compose  
-- Git  
-- Node.js (para JSDoc y KSS)
+- Linux Server with sudo privileges
+- Git
+- Internet connection
+- Archivo `.env` configurado (ver `.env.example`)
 
 ## Despliegue local y entorno de pruebas (TEST)
 
@@ -40,7 +40,7 @@ Este script realiza:
 - Limpieza de imágenes antiguas (`docker image prune -f`)
 
 ### Acceso
-Por defecto, la aplicación se levantará en `http://localhost:8080`.
+Por defecto, la aplicación se levantará en `http://localhost`.
 
 ## Despliegue en producción (AWS)
 
@@ -89,4 +89,5 @@ Toda la documentación se genera en `build/docs` y se entrega también en un ZIP
 
 - `deploy.sh`: despliegue local / TEST  
 - `deploy.aws.sh`: despliegue en producción AWS  
+- `create-admin.aws.sh`: generación del primer ADMIN en AWS  
 - `generate-docs.sh`: generación automática de documentación

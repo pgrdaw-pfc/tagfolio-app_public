@@ -1,5 +1,8 @@
 # Deployment Registry
 
+## Version 1.14.6
+* refactor(deploy): make deploy.sh more robust, add .env.example, update DEPLOYMENT.md, README.md and Memoria
+
 ## Version 1.14.5
 * update(filter): default filter names also generated from comparators and dates
 * refactor(gallery): dates shown in yyyy-mm-dd hh:mm:ss 24h format in metadata sidebar
