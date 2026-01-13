@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title th:text="${pageTitle != null ? pageTitle : 'Tagfolio'}">Tagfolio</title>
+
+    <!-- Favicon -->
+    <link rel="icon" th:href="@{/favicon.ico}" sizes="any">
+    <link rel="icon" th:href="@{/favicon.svg}" type="image/svg+xml">
+    <link rel="apple-touch-icon" th:href="@{/apple-touch-icon.png}">
+
+    <!-- New CSS Files -->
+    <link rel="stylesheet" th:href="@{/css/_variables.css}">
+    <link rel="stylesheet" th:href="@{/css/_base.css}">
+    <link rel="stylesheet" th:href="@{/css/_components.css}">
+    <link rel="stylesheet" th:href="@{/css/_layout.css}">
+    <link rel="stylesheet" th:href="@{/css/_responsive.css}">
+    <link rel="stylesheet" th:href="@{/css/image_gallery.css}">
+    <link rel="stylesheet" th:href="@{/css/feature-bar.css}">
+    <!-- Removed:
+    <link rel="stylesheet" th:href="@{/css/top-bar-filter.css}">
+    <link rel="stylesheet" th:href="@{/css/top-bar-report-generator.css}">
+    <link rel="stylesheet" th:href="@{/css/report-creation-modal.css}">
+    <link rel="stylesheet" th:href="@{/css/report-view.css}">
+    -->
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        window.isAnonymous = /*[[${#authentication.principal == 'anonymousUser'}]]*/ true;
+        window.displayMetadataMap = JSON.parse(/*[[${displayMetadataMapJson}]]*/ '{}');
+        /*]]>*/
+    </script>
+</head>
+
+<body>
+
+<div class="top-bar">
+    <div th:replace="~{fragments/nav-bar :: navbar}"></div>
+</div>
+
+
+<div class="app-layout" th:classappend="${(isUserManagementPage ?: false) ? 'user-management-layout' : ((isSettingsPage ?: false) ? 'settings-layout' : '')}">
+    <!-- Buttons Sidebar -->
+    <div class="buttons-sidebar" id="buttons-sidebar" th:unless="${(isUserManagementPage ?: false) or (isSettingsPage ?: false) or (isImageViewPage ?: false)}">
+        <button class="sidebar__collapse-toggle" data-target-id="reports-section-content" data-label="Reports"><span>R</span></button>
+        <button class="sidebar__collapse-toggle" data-target-id="filters-section-content" data-label="Filters"><span>F</span></button>
+        <button class="sidebar__collapse-toggle" data-target-id="tags-section-content" data-label="Tags"><span>T</span></button>
+        <button class="sidebar__collapse-toggle" data-target-id="metadata-section-content" data-label="Metadata"><span>M</span></button>
+        <button class="sidebar__collapse-toggle" data-target-id="exiftool-section-content" data-label="Exiftool"><span>E</span></button>
+    </div>
+
+    <div class="app-workspace">
+        <!-- Contents Topbar -->
+        <div class="contents-topbar" th:unless="${(isUserManagementPage ?: false) or (isSettingsPage ?: false)}">
+            <!-- Top report generator bar -->
+            <div th:replace="~{fragments/report-bar :: top-bar-report}" sec:authorize="isAuthenticated()"></div>
+            <!-- Top filter bar -->
+            <div th:replace="~{fragments/filter-bar :: top-bar-filter}"></div>
+        </div>
+
+        <div class="workspace-body">
+            <!-- Contents Sidebar -->
+            <div class="contents-sidebar" id="contents-sidebar" th:unless="${(isUserManagementPage ?: false) or (isSettingsPage ?: false) or (isImageViewPage ?: false)}">
+                <div class="sidebar__section" data-section-id="tags">
+                    <h3 class="sidebar__section-title">
+                        <span class="sidebar__title-text">Tags</span>
+                    </h3>
+                    <div class="sidebar__section-content" id="tags-section-content">
+                        <!-- The dynamic tag content will be rendered here by js/components/sidebar.js -->
+                    </div>
+                </div>
+                <div class="sidebar__section" data-section-id="metadata">
+                    <h3 class="sidebar__section-title">
+                        <span class="sidebar__title-text">Metadata</span>
+                    </h3>
+                    <div class="sidebar__section-content" id="metadata-section-content">
+                        <!-- Metadata content will be rendered here by js/components/sidebar.js -->
+                    </div>
+                </div>
+                <div class="sidebar__section" data-section-id="exiftool">
+                    <h3 class="sidebar__section-title">
+                        <span class="sidebar__title-text">Exiftool</span>
+                    </h3>
+                    <div class="sidebar__section-content" id="exiftool-section-content">
+                        <!-- Exiftool content will be rendered here by js/components/sidebar.js -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="main-content__area" id="main-content-area">
+                <div id="upload-overlay" class="upload-overlay" th:unless="${(isUserManagementPage ?: false) or (isSettingsPage ?: false)}">
+                    <div class="upload-overlay__inner">
+                        <div class="spinner" role="status">
+                            <span class="visually-hidden">Uploading...</span>
+                        </div>
+                        <p class="upload-overlay__text">Uploading...</p>
+                    </div>
+                </div>
+
+                <div layout:fragment="content">
+                    <!-- This is where home/index.html content will be injected -->
+                </div>
+
+                <form id="upload-form" action="/images/upload" method="post" enctype="multipart/form-data" th:unless="${(isUserManagementPage ?: false) or (isSettingsPage ?: false)}">
+                    <input type="file" id="fileInput" name="files" multiple>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Alert Container -->
+    <div id="global-alert-container">
+        <div th:if="${globalSuccessMessage}" class="alert alert-success">
+            <p th:text="${globalSuccessMessage}"></p>
+        </div>
+        <div th:if="${globalErrorMessage}" class="alert alert-error">
+            <p th:text="${globalErrorMessage}"></p>
+        </div>
+    </div>
+
+    <!-- Removed: Report Creation Modal -->
+    <!-- <div th:replace="~{fragments/report-creation-modal :: report-creation-modal}"></div> -->
+
+</div>
+
+<!-- Core Libraries -->
+<script th:src="@{/js/core/globals.js}"></script>
+<script th:src="@{/js/core/api.js}"></script>
+<script th:src="@{/js/ui/alerts.js}"></script>
+<script th:src="@{/js/ui/dropdown.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
+<!-- Conditional scripts for main app functionality -->
+<th:block th:unless="${(isUserManagementPage ?: false) or (isSettingsPage ?: false)}">
+    <script th:src="@{/js/ui/selection.js}"></script>
+    <script th:src="@{/js/features/filtering.js}"></script>
+    <script th:src="@{/js/features/reports.js}"></script>
+    <script th:src="@{/js/features/images.js}"></script>
+    <script th:src="@{/js/features/uploader.js}"></script>
+    <script th:src="@{/js/ui/sidebar.js}"></script>
+    <script th:src="@{/js/ui/navbar.js}"></script>
+    <script th:src="@{/js/ui/views.js}"></script>
+    <script th:src="@{/js/features/gallery.js}"></script>
+    <script th:src="@{/js/app.js}"></script> <!-- Main app entry point, loaded last -->
+</th:block>
+
+<!-- Conditional scripts for user management page -->
+<th:block th:if="${(isUserManagementPage ?: false)}">
+    <script th:src="@{/js/pages/users-list.js}"></script>
+</th:block>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+/*
+Image Gallery
+
+Styles for image grids, cards, list items, and selection.
+
+Styleguide ImageGallery
+*/
+
+:root {
+    --image-scale: 1.0;
+    --base-card-width: 150px;
+    --scaled-card-width: calc(var(--base-card-width) * var(--image-scale));
+}
+
+/*
+Image Grid
+
+The main container for the image gallery.
+
+.list-view - A list view layout for the grid.
+
+Markup:
+<div class="image-grid">
+  <!-- Image cards -->
+</div>
+
+Styleguide ImageGallery.Grid
+*/
+.image-grid {
+    display: grid;
+    gap: var(--spacing-md);
+    justify-content: center;
+}
+
+.image-grid:not(.list-view) {
+    grid-template-columns: repeat(auto-fill, var(--scaled-card-width));
+}
+
+.image-grid:not(.list-view) .image-card {
+    flex-direction: column;
+    width: var(--scaled-card-width);
+    aspect-ratio: 1;
+}
+
+.image-grid:not(.list-view) .image-card-details {
+    display: none;
+}
+
+.image-grid.list-view {
+    grid-template-columns: 1fr;
+}
+
+.image-grid.list-view .image-card {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    padding: var(--spacing-sm);
+}
+
+.image-grid.list-view .image-card img {
+    width: var(--scaled-card-width);
+    height: var(--scaled-card-width);
+    margin-right: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.image-grid.list-view .image-card-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*
+Image Card
+
+A card representing an image in the gallery.
+
+.selected - Indicates the card is selected.
+.not-matching - Indicates the card does not match the current filter.
+
+Markup:
+<div class="image-card">
+  <img src="..." alt="Image">
+  <div class="image-title">Image Title</div>
+</div>
+
+Styleguide ImageGallery.Card
+*/
+.image-card {
+    border: 1px solid var(--color-border-primary);
+    box-shadow: var(--box-shadow-md);
+    display: flex;
+    background-color: var(--color-bg-secondary);
+    cursor: pointer;
+    border-radius: var(--border-radius-md);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, opacity 0.2s ease, filter 0.3s ease;
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.image-card-details .list-item-sort-field {
+    font-size: 0.9em;
+    color: var(--color-text-secondary);
+}
+.image-card-details .list-item-sort-field strong {
+    color: var(--color-text-default);
+}
+
+.image-card.selected {
+    border: 2px solid var(--color-highlight);
+    transform: scale(1.02);
+    opacity: 1;
+    filter: none;
+}
+
+.image-card.not-matching {
+    opacity: 0.3;
+    filter: grayscale(80%);
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.image-card.not-matching:hover {
+    opacity: 0.8;
+    filter: grayscale(20%);
+}
+
+.image-card.not-matching.selected {
+    opacity: 1;
+    filter: none;
+}
+
+.image-card:hover img {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.image-card .image-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(var(--color-bg-primary-rgb), 0.7);
+    color: var(--color-text-default);
+    padding: 5px;
+    font-size: 0.8em;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

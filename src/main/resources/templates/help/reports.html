@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main-layout}">
+<head>
+    <title>Help - Reports</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container help-container">
+        <h1 class="help-title" id="top">Help: Reports</h1>
+        <p class="help-lead">This section provides help regarding reports.</p>
+
+        <div class="help-index mb-5">
+            <h4>Contents</h4>
+            <ul>
+                <li><a href="#add-images">Adding Images to Report</a></li>
+                <li><a href="#sort-images">Sorting Images in Report</a></li>
+                <li><a href="#save-reports">Saving Reports</a></li>
+                <li><a href="#share-reports">Sharing Reports</a></li>
+                <li><a href="#copy-link">Copying Report Link</a></li>
+                <li><a href="#compact-view">Compact Report View</a></li>
+            </ul>
+        </div>
+
+        <!-- reports-add-images.png -->
+        <div class="help-section" id="add-images">
+            <h3>Adding Images to Report</h3>
+            <p>Select specific images to include in your report generation.</p>
+            <img th:src="@{/img/help/reports-add-images.png}" class="help-image" alt="Adding Images to Report">
+            <p>To add images:</p>
+            <ol>
+                <li>Select images in the gallery view.</li>
+                <li>Click the "Add" button in the report toolbar.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- reports-sort-images.png -->
+        <div class="help-section" id="sort-images">
+            <h3>Sorting Images in Report</h3>
+            <p>Arrange the order of images within your report for better presentation.</p>
+            <img th:src="@{/img/help/reports-sort-images.png}" class="help-image" alt="Sorting Images in Report">
+            <p>To sort images:</p>
+            <ol>
+                <li>Drag and drop the image thumbnails to reorder them.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- reports-save.png -->
+        <div class="help-section" id="save-reports">
+            <h3>Saving Reports</h3>
+            <p>Save your report configuration to regenerate it later or keep a record.</p>
+            <img th:src="@{/img/help/reports-save.png}" class="help-image" alt="Saving Reports">
+            <p>To save a report:</p>
+            <ol>
+                <li>Enter a name for the report and save.</li>
+                <li>Choose a report type in the dropdown.</li>
+                <li>Click the "Save" button in the report toolbar.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- reports-share.png -->
+        <div class="help-section" id="share-reports">
+            <h3>Sharing Reports</h3>
+            <p>Share your generated reports with colleagues or clients.</p>
+            <img th:src="@{/img/help/reports-share.png}" class="help-image" alt="Sharing Reports">
+            <p>To share a report:</p>
+            <ol>
+                <li>Generate or open a saved report.</li>
+                <li>Click the "Share" button to copy its URL in the clipboard.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- reports-copy-link.png -->
+        <div class="help-section" id="copy-link">
+            <h3>Copying Report Link</h3>
+            <p>Get a direct link to your report to share easily.</p>
+            <img th:src="@{/img/help/reports-copy-link.png}" class="help-image" alt="Copying Report Link">
+            <p>To copy the link:</p>
+            <ol>
+                <li>Find your shared report in the sidebar.</li>
+                <li>Click the "Share" button next to the report name to copy the URL in the clipboard.</li>
+            </ol>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- reports-compact.png -->
+        <div class="help-section" id="compact-view">
+            <h3>Viewing Shared Reports</h3>
+            <p>Anonymous and registered users can see shared reports.</p>
+            <img th:src="@{/img/help/reports-compact.png}" class="help-image" alt="Compact Report View">
+            <p>To see a shared report:</p>
+            <ol>
+                <li>Copy the URL in the clipboard as explained <a href="#copy-link">before</a>.</li>
+                <li>Paste it in the browser.</li>
+                <li>You will see the report type selected ready to be printed.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

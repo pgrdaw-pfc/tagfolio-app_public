@@ -1,0 +1,37 @@
+/*
+Error Page
+
+Styles for the error page, including the error icon, title, and message.
+
+Markup:
+<div class="text-center">
+  <svg class="error-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+  </svg>
+  <h1 class="error-title">Error</h1>
+  <p class="error-message">Something went wrong.</p>
+  <a href="/" class="button button--primary">Go back home</a>
+</div>
+
+Styleguide Error
+*/
+
+.error-icon {
+    width: 4rem;
+    height: 4rem;
+    color: var(--color-error);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.error-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-default);
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+}

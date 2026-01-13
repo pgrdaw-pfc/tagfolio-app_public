@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main-layout}">
+<head>
+    <title>Help - Tags</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container help-container">
+        <h1 class="help-title" id="top">Help: Tags</h1>
+        <p class="help-lead">This section provides help regarding tag management.</p>
+
+        <div class="help-index mb-5">
+            <h4>Contents</h4>
+            <ul>
+                <li><a href="#view-tags">Viewing All Tags</a></li>
+                <li><a href="#add-tags">Adding Tags</a></li>
+                <li><a href="#delete-tags">Deleting Tags</a></li>
+            </ul>
+        </div>
+
+        <!-- tags-view-all.png -->
+        <div class="help-section" id="view-tags">
+            <h3>Viewing All Tags</h3>
+            <p>You can see all the tags currently used in your collection.</p>
+            <img th:src="@{/img/help/tags-view-all.png}" class="help-image" alt="Viewing All Tags">
+            <p>To view all tags:</p>
+            <ol>
+                <li>Open the Tags sidebar panel.</li>
+                <li>Unselect all images in gallery.</li>
+                <li>The tags side-panel shows all the tags in your collection.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- tags-add.png -->
+        <div class="help-section" id="add-tags">
+            <h3>Adding Tags</h3>
+            <p>Tags allow you to categorize and easily retrieve your images later.</p>
+            <img th:src="@{/img/help/tags-add.png}" class="help-image" alt="Adding Tags">
+            <p>To add a tag:</p>
+            <ol>
+                <li>Select one or more images in the gallery.</li>
+                <li>Type the tag name in the tags input field in the sidebar.</li>
+                <li>Press Enter to apply the tag to the selected images.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- tags-delete.png -->
+        <div class="help-section" id="delete-tags">
+            <h3>Deleting Tags</h3>
+            <p>If a tag is no longer needed or incorrect, you can remove it from an image.</p>
+            <img th:src="@{/img/help/tags-delete.png}" class="help-image" alt="Deleting Tags">
+            <p>To delete a tag:</p>
+            <ol>
+                <li>Select the image with the tag you want to remove.</li>
+                <li>Select the tag in the tags list for that image.</li>
+                <li>Click the "Delete" button in the Edit menu or toolbar.</li>
+                <li>Confirm the deletion in the popup dialog.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

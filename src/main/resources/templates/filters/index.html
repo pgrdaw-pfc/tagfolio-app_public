@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/app}">
+
+<head>
+    <title>Filter Images - Tagfolio</title>
+    <!-- CSS files are now loaded from the main layout -->
+</head>
+
+<body>
+
+<div layout:fragment="content">
+    <div class="gallery-container" id="gallery">
+        <div class="image-grid" id="image-grid-main">
+            <!-- Images will be loaded here by app.js -->
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        window.batchSize = /*[[${batchSize}]]*/ 50;
+        window.sortableFields = JSON.parse(/*[[${sortableFieldsJson}]]*/ '{}'); // Parse JSON string
+        window.currentSort = /*[[${currentSort}]]*/ 'Imported';
+        window.currentDirection = /*[[${currentDirection}]]*/ 'desc';
+        window.displayMetadataMap = JSON.parse(/*[[${displayMetadataMapJson}]]*/ '{}'); // Parse JSON string
+        window.sharedImageIds = /*[[${sharedImageIds}]]*/ []; // Assuming controller provides this list
+        window.sharedFilterToken = /*[[${sharedFilterToken}]]*/ null; // Expose sharedFilterToken
+        /*]]>*/
+    </script>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main-layout}">
+<head>
+    <title>Help - Images</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container help-container">
+        <h1 class="help-title" id="top">Help: Images</h1>
+        <p class="help-lead">This section provides help regarding image management.</p>
+
+        <div class="help-index mb-5">
+            <h4>Contents</h4>
+            <ul>
+                <li><a href="#import-filesystem">Import from Filesystem</a></li>
+                <li><a href="#import-drag">Drag and Drop Import</a></li>
+                <li><a href="#view-image">Viewing an Image</a></li>
+                <li><a href="#view-exiftool">Viewing ExifTool Data</a></li>
+                <li><a href="#view-metadata">Viewing Metadata</a></li>
+                <li><a href="#delete-images">Deleting Images</a></li>
+            </ul>
+        </div>
+
+        <!-- images-import-filesystem.png -->
+        <div class="help-section" id="import-filesystem">
+            <h3>Import from Filesystem</h3>
+            <p>You can easily import images directly from your local filesystem into the application.</p>
+            <img th:src="@{/img/help/images-import-filesystem.png}" class="help-image" alt="Import from Filesystem">
+            <p>Follow these steps to import images:</p>
+            <ol>
+                <li>Navigate to the File menu in the top navigation bar.</li>
+                <li>Select "Import Images" from the dropdown options.</li>
+                <li>Choose the files you wish to upload from the dialog box.</li>
+                <li>Click Open to import the selected images.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- images-import-drag.png -->
+        <div class="help-section" id="import-drag">
+            <h3>Drag and Drop Import</h3>
+            <p>For a faster workflow, you can drag and drop images directly into the application window.</p>
+            <img th:src="@{/img/help/images-import-drag.png}" class="help-image" alt="Drag and Drop Import">
+            <p>To use this feature:</p>
+            <ol>
+                <li>Select one or more image files from your computer's file explorer.</li>
+                <li>Drag the selected files over the application gallery.</li>
+                <li>Drop the files to instantly start the upload process.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- image-view.png -->
+        <div class="help-section" id="view-image">
+            <h3>Viewing an Image</h3>
+            <p>Double-clicking on any thumbnail in the gallery will open the image in a detailed view.</p>
+            <img th:src="@{/img/help/image-view.png}" class="help-image" alt="Viewing an Image">
+            <p>In the image view:</p>
+            <ol>
+                <li>You can see the full-resolution version of the image.</li>
+                <li>Use the navigation arrows to move between images.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- images-view-exiftool.png -->
+        <div class="help-section" id="view-exiftool">
+            <h3>Viewing ExifTool Data</h3>
+            <p>For advanced users, ExifTool data provides comprehensive information about the image file.</p>
+            <img th:src="@{/img/help/images-view-exiftool.png}" class="help-image" alt="Viewing ExifTool Data">
+            <p>To access ExifTool data:</p>
+            <ol>
+                <li>Ensure the ExifTool panel is enabled in the view settings.</li>
+                <li>Select one or more images in the gallery.</li>
+                <li>Scroll through the detailed EXIF tags displayed in the panel.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- images-view-metadata.png -->
+        <div class="help-section" id="view-metadata">
+            <h3>Viewing Metadata</h3>
+            <p>Inspect the technical details and selected metadata associated with your images.</p>
+            <img th:src="@{/img/help/images-view-metadata.png}" class="help-image" alt="Viewing Metadata">
+            <p>To view metadata:</p>
+            <ol>
+                <li>Ensure the Metadata panel is enabled in the view settings.</li>
+                <li>Select one or more images in the gallery.</li>
+                <li>Review fields such as filename, rating and creation date.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- images-delete.png -->
+        <div class="help-section" id="delete-images">
+            <h3>Deleting Images</h3>
+            <p>Remove unwanted images from your collection to keep it organized.</p>
+            <img th:src="@{/img/help/images-delete.png}" class="help-image" alt="Deleting Images">
+            <p>To delete an image:</p>
+            <ol>
+                <li>Select the image(s) you want to remove.</li>
+                <li>Click the "Delete" button in the Edit menu or toolbar.</li>
+                <li>Confirm the deletion in the popup dialog.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

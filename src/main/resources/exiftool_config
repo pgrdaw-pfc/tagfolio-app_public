@@ -1,0 +1,25 @@
+%Image::ExifTool::UserDefined = (
+    # Register our custom 'tf' namespace with XMP
+    'Image::ExifTool::XMP::Main' => {
+        tf => {
+            SubDirectory => { TagTable => 'Image::ExifTool::UserDefined::tf' },
+        },
+    },
+);
+
+# Define the tags for our 'tf' namespace
+%Image::ExifTool::UserDefined::tf = (
+    GROUPS      => { 0 => 'XMP', 1 => 'XMP-tf', 2 => 'Image' },
+    NAMESPACE   => { 'tf' => 'http://ns.tagfol.io/tf/1.0/' },
+    WRITABLE    => 'string', # Default type for tags in this namespace is string
+
+    # Define the 'Tags' tag which will be a list of strings
+    Tags => {
+        Writable    => 'string',
+        List        => 'Bag', # 'Bag' is for an unordered list of values
+        Description => 'A list of tags associated with the image by Tagfolio.',
+    },
+);
+
+# This line is mandatory for all ExifTool config files
+1;

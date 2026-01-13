@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:fragment="top-bar-report" class="top-bar--two-column d-none" id="top-bar-reports" data-section-id="reports" th:unless="${(isUserManagementPage ?: false) or (isSettingsPage ?: false)}">
+        <div class="top-bar__secondary-column-wrapper">
+            <div class="sidebar__section top-bar__secondary-column">
+                <h3 class="sidebar__section-title">Reports</h3>
+                <div class="sidebar-scroll-container">
+                    <ul id="report-list" class="badge-list">
+                        <!-- User reports will be listed here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar__section top-bar__main-column">
+            <div class="sidebar__section-header">
+                <div class="sidebar__section-controls">
+                    <div class="autocomplete-input-wrapper combobox" style="flex-grow: 1;">
+                        <input type="text" id="report-name-input" class="sidebar__section-input" placeholder="Report Name" aria-label="Report Name">
+                        <span class="autocomplete-arrow">&#9662;</span>
+                        <div class="autocomplete-dropdown"></div>
+                    </div>
+                    <select id="report-type-select" class="sidebar__section-select" aria-label="Report Type">
+                        <!-- Options will be dynamically loaded by JavaScript -->
+                    </select>
+                </div>
+                <div class="sidebar__section-action-buttons action-buttons" id="report-generator-action-buttons">
+                    <button id="clear-report-images-btn" class="btn btn--compact btn-action">Clear</button>
+                    <button id="add-selected-images-btn" class="btn btn--compact btn-action">Add</button>
+                    <button id="remove-selected-images-btn" class="btn btn--compact btn-action">Remove</button>
+                    <button id="save-report-btn" class="btn btn--compact btn-action" disabled>Save</button>
+                    <button id="share-report-btn" class="btn btn--compact btn-action" disabled>Share</button>
+                </div>
+            </div>
+            <div id="report-images-container" class="sidebar__section-content-area">
+                <!-- Selected image thumbnails will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

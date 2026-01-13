@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/app}">
+
+<head>
+    <title>Gallery - Tagfolio</title>
+    <!-- CSS files are now loaded from the main layout -->
+</head>
+
+<body>
+
+<th:block layout:fragment="content">
+    <input id="fileInput" type="file" name="images[]" accept="image/*" multiple hidden sec:authorize="hasAuthority('UPLOAD_IMAGES')">
+
+    <div class="gallery-container" id="gallery">
+        <div class="image-grid" id="image-grid-main">
+            <!-- Images will be loaded here by app.js -->
+        </div>
+    </div>
+
+<!--
+    <div id="selection-box" style="display: none;"></div>
+-->
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        window.batchSize = /*[[${batchSize}]]*/ 50;
+        window.sortableFields = JSON.parse(/*[[${sortableFieldsJson}]]*/ '{}');
+        window.currentSort = /*[[${currentSort}]]*/ 'Imported';
+        window.currentDirection = /*[[${currentDirection}]]*/ 'desc';
+        window.displayMetadataKeys = /*[[${displayMetadataKeys}]]*/ []; // Correctly use displayMetadataKeys
+        /*]]>*/
+    </script>
+
+    <!-- Removed: <script th:src="@{/js/pages/home-index.js}"></script> -->
+</th:block>
+
+</body>
+</html>

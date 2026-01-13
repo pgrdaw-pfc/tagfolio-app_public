@@ -1,0 +1,82 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.5.5'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.pgrdaw'
+version = '1.14.5'
+description = 'Tagfolio - Convierte imagenes en propuestas'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Web & Template Dependencies
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+
+    // Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+
+    // Database & Persistence
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+    // Oracle driver for 21c
+    runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+
+    // Lombok - automatic getters and setters
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Jackson - handle lazy loading proxies
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate6'
+
+    // Development & Testing
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'com.h2database:h2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+    jvmArgs = ['-Xshare:off']
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+bootRun {
+    jvmArgs = ['-Xshare:off']
+}
+
+bootJar {
+    archiveFileName = "app.jar"
+}
+
+compileJava {
+    options.compilerArgs << '-Xlint:-options'
+}
+
+processResources {
+    filesMatching('application.properties') {
+        filter(ReplaceTokens, tokens: [
+            'project.version': project.version
+        ])
+    }
+}

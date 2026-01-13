@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "jsdoc": "^4.0.5",
+    "kss": "^3.1.0"
+  }
+}

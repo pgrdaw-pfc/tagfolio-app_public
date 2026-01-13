@@ -1,0 +1,92 @@
+/*
+Variables
+
+Defines CSS variables for colors, typography, spacing, and other global properties.
+
+Colors:
+--color-bg-primary - Primary background color.
+--color-bg-secondary - Secondary background color.
+--color-bg-tertiary - Tertiary background color.
+--color-text-default - Default text color.
+--color-highlight - Highlight color.
+--color-success - Success color.
+--color-info - Info color.
+--color-warning - Warning color.
+--color-error - Error color.
+
+Typography:
+--font-family-primary - The primary font family.
+--font-size-base - The base font size.
+--line-height-base - The base line height.
+
+Spacing:
+--spacing-xs - Extra small spacing.
+--spacing-sm - Small spacing.
+--spacing-md - Medium spacing.
+--spacing-lg - Large spacing.
+--spacing-xl - Extra large spacing.
+
+Styleguide Variables
+*/
+
+:root {
+    --color-bg-primary: #282c34;
+    --color-bg-secondary: #3c3f41;
+    --color-bg-tertiary: #44484c;
+    --color-bg-hover-primary: #333840;
+    --color-bg-hover-secondary: #4a4e52;
+    --color-text-default: #abb2bf;
+    --color-text-light: #c8ccd4;
+    --color-text-muted: #8a8f98;
+    --color-border-primary: #4e5254;
+    --color-border-secondary: #6b7076;
+    --color-highlight: #ffff00;
+    --color-highlight-darker: #b3b300;
+    --color-highlight-rgb: 97, 175, 239;
+    --color-success: #98c379;
+    --color-success-bg: rgba(152, 195, 121, 0.95);
+    --color-success-text: #282c34;
+    --color-info: #56b6c2;
+    --color-info-bg: rgba(86, 182, 194, 0.95);
+    --color-info-text: #282c34;
+    --color-warning: #e5c07b;
+    --color-warning-bg: rgba(229, 192, 123, 0.95);
+    --color-warning-text: #282c34;
+    --color-error: #e06c75;
+    --color-error-bg: rgba(224, 108, 117, 0.95);
+    --color-error-text: #282c34;
+    --color-share: #28a745;
+    --color-share-hover: #218838;
+    --color-primary-action: #007bff;
+    --color-primary-action-hover: #0056b3;
+    --color-primary-action-rgb: 0, 123, 255;
+    --color-accent-primary: #007bff;
+    --color-danger: #dc3545;
+    --color-button-secondary: #6c757d;
+
+    --font-family-primary: 'Roboto', sans-serif;
+    --font-size-base: 16px;
+    --line-height-base: 1.6;
+
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-pill: 50px;
+
+    --box-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+    --box-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --box-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --box-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+
+    --image-scale: 1.0;
+    --image-scale-step: 0.1;
+    --image-scale-min: 0.5;
+    --image-scale-max: 2.0;
+    --scaled-card-width: calc(150px * var(--image-scale));
+}

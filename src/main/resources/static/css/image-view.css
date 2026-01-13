@@ -1,0 +1,64 @@
+/*
+Image View
+
+Styles for the image detail view.
+
+Styleguide ImageView
+*/
+
+/*
+Image View Container
+
+The main container for the image detail view.
+
+Markup:
+<div class="image-view-container">
+  <!-- Image view content -->
+</div>
+
+Styleguide ImageView.Container
+*/
+.image-view-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    width: 100%;
+    padding: var(--spacing-lg);
+    box-sizing: border-box;
+}
+
+.image-view-container .image-section {
+    flex-grow: 1;
+    display: block;
+    overflow: visible;
+    margin-bottom: var(--spacing-md);
+}
+
+.image-view-container .image-section img {
+    width: 100%;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    object-fit: unset;
+    display: block;
+}
+
+.image-view-container .image-title {
+    margin-bottom: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.image-view-container .columns-container.row {
+    gap: var(--spacing-lg);
+    flex-shrink: 0;
+    margin-top: var(--spacing-md);
+}
+
+.image-view-container .column.col {
+    width: 50%;
+}
+
+.image-view-container .footer {
+    margin-top: var(--spacing-md);
+    flex-shrink: 0;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${report.name} + ' (Compact)'"></title>
+    <!-- Link _variables.css first to ensure CSS variables are defined -->
+    <link rel="stylesheet" th:href="@{/css/_variables.css}">
+    <link rel="stylesheet" th:href="@{/css/reports.css}">
+</head>
+<body>
+
+    <!-- Outer loop for pages. Creates one report-page-container per page. -->
+    <div th:each="pageNumber : ${#numbers.sequence(0, (#lists.size(report.reportImages) > 0 ? (#lists.size(report.reportImages) - 1) / 4 : -1))}" class="report-page-container compact-page">
+
+        <!-- Inner loop for the 4 rows on the page. -->
+        <th:block th:each="rowIndex : ${#numbers.sequence(0, 3)}">
+            <th:block th:with="imageIndex = ${pageNumber * 4 + rowIndex}">
+
+                <!-- If the image exists, render the full product row. -->
+                <div th:if="${imageIndex < #lists.size(report.reportImages)}" th:with="reportImage = ${report.reportImages[imageIndex]}, rawMetadata=${metadataService.getRawMetadata(reportImage.image)}" class="product-row row">
+                    <div class="col col-1">
+                        <img th:src="@{'/images/original/' + ${reportImage.image.id}}"
+                             th:alt="${metadataService.getMetadataValue('Titulo', rawMetadata) != null ? metadataService.getMetadataValue('Titulo', rawMetadata) : 'Image'}"/>
+                    </div>
+                    <div class="col col-2">
+                        <div class="title-row" th:if="${metadataService.getMetadataValue('Titulo', rawMetadata) != null and not #strings.isEmpty(metadataService.getMetadataValue('Titulo', rawMetadata))}">
+                            <span th:text="${metadataService.getMetadataValue('Titulo', rawMetadata)}"></span>
+                        </div>
+                        <div class="caracteristicas">
+                            <div class="metadata-item" th:each="i : ${#numbers.sequence(0, 9)}" th:with="val=${metadataService.getMetadataValue('Datos' + i, rawMetadata)}">
+                                <th:block th:if="${val != null and not #strings.isEmpty(val)}">
+                                    <th:block th:if="${#strings.contains(val, ':')}">
+                                        <strong><span th:text="${#strings.substringBefore(val, ':')}"></span>:</strong>
+                                        <span th:text="${#strings.substringAfter(val, ':')}"></span>
+                                    </th:block>
+                                    <th:block th:if="${not #strings.contains(val, ':')}">
+                                        <span th:text="${val}"></span>
+                                    </th:block>
+                                </th:block>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-3">
+                        <div class="description" th:if="${metadataService.getMetadataValue('Descripcion', rawMetadata) != null and not #strings.isEmpty(metadataService.getMetadataValue('Descripcion', rawMetadata))}">
+                            <strong>Descripción:</strong>
+                            <p th:text="${metadataService.getMetadataValue('Descripcion', rawMetadata)}"></p>
+                        </div>
+                        <div class="notes" th:if="${metadataService.getMetadataValue('Notas', rawMetadata) != null and not #strings.isEmpty(metadataService.getMetadataValue('Notas', rawMetadata))}">
+                            <p th:text="${metadataService.getMetadataValue('Notas', rawMetadata)}"></p>
+                        </div>
+                        <div class="web-link" th:if="${metadataService.getMetadataValue('Web', rawMetadata) != null and not #strings.isEmpty(metadataService.getMetadataValue('Web', rawMetadata))}">
+                            <a th:href="${metadataService.getMetadataValue('Web', rawMetadata)}" th:text="${metadataService.getMetadataValue('Web', rawMetadata)}" target="_blank"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- If the image does NOT exist (for the last page), render an empty placeholder row. -->
+                <div th:unless="${imageIndex < #lists.size(report.reportImages)}" class="product-row placeholder row">
+                    <!-- This empty div takes up space to ensure even distribution on the last page. -->
+                </div>
+
+            </th:block>
+        </th:block>
+    </div>
+
+</body>
+</html>

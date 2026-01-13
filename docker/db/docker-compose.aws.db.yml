@@ -1,0 +1,23 @@
+services:
+  db:
+    container_name: tagfolio-db
+    build:
+      context: .
+    ports:
+      - "1521:1521"
+    shm_size: '2g'  # Added: Allocate 2GB of shared memory for Oracle
+    environment:
+      - ORACLE_PASSWORD=${DB_PASSWORD}
+      - APP_USER=${DB_USER}
+      - APP_USER_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - db_data:/opt/oracle/oradata
+    healthcheck:
+      test: ["CMD", "/healthcheck.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+
+volumes:
+  db_data:

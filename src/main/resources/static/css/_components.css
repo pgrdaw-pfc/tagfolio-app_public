@@ -1,0 +1,1123 @@
+/*
+Components
+
+Reusable UI components used throughout the application.
+
+Styleguide Components
+*/
+
+/*
+Buttons
+
+Defines the different types of buttons used in the application.
+
+.btn-primary - Primary action button.
+.btn-secondary - Secondary action button.
+.btn-info - Informational button.
+.btn-warning - Warning button.
+.btn-danger - Danger button.
+.btn--compact - A more compact button.
+.btn-action - A general-purpose action button.
+
+Markup:
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-secondary">Secondary</button>
+<button class="btn btn-info">Info</button>
+<button class="btn btn-warning">Warning</button>
+<button class="btn btn-danger">Danger</button>
+<button class="btn btn--compact">Compact</button>
+<button class="btn btn-action">Action</button>
+
+Styleguide Components.Buttons
+*/
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: var(--border-radius-md);
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-primary, .btn-secondary {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.2rem;
+}
+
+.btn-primary {
+    background-color: var(--color-highlight);
+    color: var(--color-bg-primary);
+    border: 1px solid var(--color-highlight);
+}
+.btn-primary:hover {
+    background-color: var(--color-highlight-darker);
+    border-color: var(--color-highlight-darker);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-text-default);
+    border: 1px solid var(--color-border-primary);
+}
+.btn-secondary:hover {
+    background-color: var(--color-border-primary);
+}
+
+.btn-info {
+    background-color: var(--color-info);
+    color: var(--color-info-text);
+    border: 1px solid var(--color-info);
+}
+.btn-info:hover {
+    background-color: #40a7c4;
+    border-color: #40a7c4;
+}
+
+.btn-warning {
+    background-color: var(--color-warning);
+    color: var(--color-warning-text);
+    border: 1.5px solid var(--color-warning);
+}
+.btn-warning:hover {
+    background-color: #e09b3b;
+    border-color: #e09b3b;
+}
+
+.btn-danger {
+    background-color: var(--color-error);
+    color: var(--color-error-text);
+    border: 1px solid var(--color-error);
+}
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+}
+
+.btn--compact {
+    padding: 2px 5px;
+    font-size: 0.8em;
+    min-width: 30px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-pill);
+}
+
+.btn-action {
+    background-color: var(--color-border-primary);
+    border: 1px solid var(--color-border-secondary);
+    color: var(--color-text-default);
+}
+
+.btn-action:hover {
+    background-color: var(--color-border-secondary);
+}
+
+.sidebar__collapse-toggle {
+    background-color: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border-secondary);
+    color: var(--color-text-default);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--border-radius-sm);
+    line-height: 1;
+    transition: background-color 0.2s ease;
+}
+.sidebar__collapse-toggle:hover {
+    background-color: var(--color-bg-hover-secondary);
+}
+
+/*
+Forms
+
+Styles for form elements such as input fields, text areas, and labels.
+
+Markup:
+<div class="form-group">
+  <label class="form-label" for="example-input">Label</label>
+  <input type="text" class="form-control" id="example-input">
+  <small class="form-text">This is some help text.</small>
+</div>
+
+Styleguide Components.Forms
+*/
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+    color: var(--color-text-default);
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--color-border-primary);
+    border-radius: var(--border-radius-md);
+    box-sizing: border-box;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-default);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-size: 1.1rem;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-highlight);
+    box-shadow: 0 0 0 0.1rem rgba(var(--color-highlight-rgb), 0.25);
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+.form-text {
+    font-size: 0.875em;
+    color: var(--color-text-muted);
+    margin-top: var(--spacing-xs);
+    display: block;
+}
+
+#new-tag-input {
+    box-sizing: border-box;
+    padding: 0.3rem 0.7rem;
+    background-color: var(--color-border-primary);
+    color: var(--color-text-default);
+    border-radius: var(--border-radius-pill);
+    font-size: 0.85rem;
+    line-height: 1.2;
+    border: 1px dashed var(--color-text-muted);
+    outline: none;
+    font-family: var(--font-family-primary);
+    width: 130px;
+    transition: border-color 0.2s ease;
+}
+
+#new-tag-input:focus {
+    border-color: var(--color-highlight);
+}
+
+#new-tag-input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 1;
+}
+
+#upload-form {
+    display: none;
+}
+
+/*
+Alerts
+
+Provides styles for different types of alert messages.
+
+.alert-success - A success message.
+.alert-info - An informational message.
+.alert-warning - A warning message.
+.alert-danger - A danger or error message.
+.alert-confirmation - A confirmation message.
+
+Markup:
+<div class="alert alert-success">Success!</div>
+<div class="alert alert-info">Info</div>
+<div class="alert alert-warning">Warning!</div>
+<div class="alert alert-danger">Danger!</div>
+<div class="alert alert-confirmation">Are you sure?</div>
+
+Styleguide Components.Alerts
+*/
+.alert {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    border: 1px solid transparent;
+    box-shadow: var(--box-shadow-md);
+}
+
+.alert-success {
+    color: var(--color-success-text);
+    background-color: var(--color-success-bg);
+    border-color: var(--color-success);
+}
+.alert-info {
+    color: var(--color-info-text);
+    background-color: var(--color-info-bg);
+    border-color: var(--color-info);
+}
+.alert-warning {
+    color: var(--color-warning-text);
+    background-color: var(--color-warning-bg);
+    border-color: var(--color-warning);
+}
+.alert-error, .alert-danger {
+    color: var(--color-error-text);
+    background-color: var(--color-error-bg);
+    border-color: var(--color-error);
+}
+.alert-confirmation {
+    color: var(--color-info-text);
+    background-color: var(--color-info-bg);
+    border-color: var(--color-info);
+}
+
+.alert-buttons {
+    margin-top: var(--spacing-md);
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+}
+.alert-btn {
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid transparent;
+}
+.alert-btn.accept {
+    background-color: var(--color-success);
+    color: var(--color-bg-primary);
+    border-color: var(--color-success);
+}
+.alert-btn.accept:hover {
+    background-color: #87b068;
+}
+.alert-btn.cancel {
+    background-color: var(--color-error);
+    color: var(--color-bg-primary);
+    border-color: var(--color-error);
+}
+.alert-btn.cancel:hover {
+    background-color: #c85a63;
+}
+
+/*
+Dropdowns
+
+Styles for dropdown menus and their items.
+
+Markup:
+<div class="dropdown">
+  <button class="menu-button">Menu</button>
+  <div class="dropdown-menu-content">
+    <a href="#" class="menu-item">Item 1</a>
+    <a href="#" class="menu-item">Item 2</a>
+  </div>
+</div>
+
+Styleguide Components.Dropdowns
+*/
+.menu-button, .dropdown > button {
+    background-color: transparent;
+    color: var(--color-text-default);
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-family: var(--font-family-primary);
+    white-space: nowrap;
+}
+.menu-button:hover, .dropdown > button:hover {
+    background-color: var(--color-bg-hover-primary);
+    border-radius: var(--border-radius-md);
+}
+.menu-button .shortcut, .dropdown button .shortcut {
+    text-decoration: underline;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu-content {
+    display: none;
+    position: absolute;
+    background-color: var(--color-bg-secondary);
+    min-width: 120px;
+    box-shadow: var(--box-shadow-xl);
+    z-index: 1000;
+    border: 1px solid var(--color-border-primary);
+    border-radius: var(--border-radius-md);
+    padding: 5px 0;
+}
+
+.dropdown-menu-content .menu-item {
+    color: var(--color-text-default);
+    padding: 10px 20px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-menu-content .menu-item:hover {
+    background-color: var(--color-bg-hover-secondary);
+}
+
+.dropdown:hover .dropdown-menu-content {
+    display: block;
+}
+
+.not-implemented {
+    color: var(--color-text-muted) !important;
+    cursor: not-allowed !important;
+}
+.not-implemented:hover {
+    background-color: transparent !important;
+}
+
+.menu-item input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu > .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-submenu-content {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: var(--color-bg-secondary);
+    box-shadow: var(--box-shadow-xl);
+    z-index: 1;
+    border: 1px solid var(--color-border-primary);
+    border-radius: var(--border-radius-md);
+    padding: 5px 0;
+}
+
+.dropdown-submenu:hover .dropdown-submenu-content {
+    display: block;
+}
+
+.user-profile-dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.user-profile-toggle {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-text-default);
+}
+.user-profile-toggle:hover {
+    text-decoration: none;
+}
+.user-details {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    margin-right: var(--spacing-sm);
+}
+.user-details strong {
+    font-weight: bold;
+}
+.user-details small {
+    color: var(--color-text-muted);
+    font-size: 0.8em;
+}
+.user-profile-dropdown .dropdown-menu-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-primary);
+    list-style: none;
+    padding: 5px 0;
+    margin: 0;
+    min-width: 180px;
+    z-index: 1000;
+    box-shadow: var(--box-shadow-lg);
+    text-align: left;
+    border-radius: var(--border-radius-md);
+}
+.user-profile-dropdown.active .dropdown-menu-content {
+    display: block;
+}
+.user-profile-dropdown .menu-item {
+    color: var(--color-text-default);
+    padding: 10px 20px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+}
+.user-profile-dropdown .menu-item:hover {
+    background-color: var(--color-bg-hover-secondary);
+}
+.menu-item.active-user-menu {
+    background-color: transparent;
+    color: var(--color-text-default);
+    text-decoration: underline;
+    text-decoration-color: var(--color-highlight);
+    text-decoration-thickness: 3px;
+}
+.dropdown-divider {
+    height: 1px;
+    background-color: var(--color-border-primary);
+    margin: var(--spacing-sm) 0;
+    overflow: hidden;
+}
+button.menu-item {
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+button.menu-item:hover {
+    background-color: var(--color-bg-hover-secondary);
+    color: var(--color-text-default);
+}
+
+/*
+Tags and Badges
+
+Styles for tags and badges used to display information.
+
+.selected - A selected tag or badge.
+
+Markup:
+<span class="badge">Default</span>
+<span class="badge selected">Selected</span>
+
+Styleguide Components.Tags
+*/
+.badge-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-sm);
+    justify-content: flex-start;
+}
+.badge-list-item {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.7rem;
+    background-color: var(--color-border-primary);
+    color: var(--color-text-default);
+    border-radius: var(--border-radius-pill);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 0.85rem;
+    line-height: 1.2;
+    max-width: 100%;
+    gap: 0.4rem;
+    height: 2rem;
+    box-sizing: border-box;
+}
+.badge-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 1;
+}
+.badge:hover {
+    background-color: var(--color-border-secondary);
+}
+.badge.selected {
+    background-color: var(--color-highlight);
+    color: var(--color-bg-primary);
+    font-weight: bold;
+}
+.badge-counter {
+    background-color: var(--color-border-secondary);
+    color: var(--color-text-default);
+    border-radius: 50%;
+    width: 1.3rem;
+    height: 1.3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.badge-button {
+    background-color: var(--color-share);
+    color: white;
+    border: none;
+    padding: 0 0.6rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-pill);
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    height: 1.3rem;
+    flex-shrink: 0;
+}
+
+.badge-button:hover {
+    background-color: var(--color-share-hover);
+}
+
+/*
+Autocomplete
+
+Styles for autocomplete input fields and dropdowns.
+
+Markup:
+<div class="autocomplete-input-wrapper">
+  <input type="text" class="autocomplete-input" placeholder="Search...">
+  <div class="autocomplete-dropdown">
+    <div class="autocomplete-item">Result 1</div>
+    <div class="autocomplete-item">Result 2</div>
+  </div>
+</div>
+
+Styleguide Components.Autocomplete
+*/
+.autocomplete-input-wrapper {
+    position: relative;
+    min-width: 100px;
+}
+
+.autocomplete-input-wrapper.combobox {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-bg-primary);
+    border: 1px solid var(--color-border-primary);
+    border-radius: var(--border-radius-pill);
+    padding-right: 10px;
+    flex-grow: 1;
+}
+
+.autocomplete-input-wrapper.combobox input {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    flex-grow: 1;
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--border-radius-pill) 0 0 var(--border-radius-pill);
+    width: 100%;
+}
+
+.autocomplete-input-wrapper.combobox input:focus {
+    box-shadow: none;
+}
+
+.autocomplete-input-wrapper.combobox:focus-within {
+    border-color: var(--color-highlight);
+}
+
+.autocomplete-arrow {
+    cursor: pointer;
+    font-size: 0.8em;
+    color: var(--color-text-muted);
+    user-select: none;
+    margin-left: 5px;
+}
+
+.autocomplete-arrow:hover {
+    color: var(--color-text-default);
+}
+
+.autocomplete-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border: 1px solid var(--color-border-primary);
+    background-color: var(--color-bg-secondary);
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 100;
+    border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
+    box-shadow: var(--box-shadow-lg);
+    display: none;
+}
+
+.autocomplete-item {
+    padding: 8px 10px;
+    cursor: pointer;
+    color: var(--color-text-default);
+}
+
+.autocomplete-item:hover {
+    background-color: var(--color-border-primary);
+}
+
+.autocomplete-item.selected {
+    background-color: var(--color-highlight);
+    color: var(--color-bg-primary);
+    font-weight: bold;
+}
+
+.controls-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/*
+Card
+
+A flexible content container.
+
+Markup:
+<div class="card">
+  <h2 class="card-title">Card Title</h2>
+  <p class="card-subtitle">Card subtitle</p>
+</div>
+
+Styleguide Components.Card
+*/
+.card {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-primary);
+    padding: var(--spacing-xl);
+    box-shadow: var(--box-shadow-md);
+    width: 100%;
+    max-width: 500px;
+    border-radius: var(--border-radius-md);
+    text-align: center;
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    color: var(--color-text-default);
+}
+
+.card-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-xl) 0;
+    flex-grow: 1;
+    min-height: 100vh;
+}
+.auth-card {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-primary);
+    padding: var(--spacing-xl);
+    box-shadow: var(--box-shadow-md);
+    width: 100%;
+    max-width: 500px;
+    border-radius: var(--border-radius-md);
+    text-align: center;
+}
+.auth-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    color: var(--color-text-default);
+}
+.auth-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+}
+
+.btn-group {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+/*
+Tables
+
+Styles for data tables.
+
+Markup:
+<table class="table">
+  <thead>
+    <tr>
+      <th>Header 1</th>
+      <th>Header 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data 1</td>
+      <td>Data 2</td>
+    </tr>
+  </tbody>
+</table>
+
+Styleguide Components.Tables
+*/
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-md);
+}
+
+.table th, .table td {
+    border: 1px solid var(--color-border-primary);
+    padding: var(--spacing-sm);
+    text-align: left;
+    color: var(--color-text-default);
+}
+
+.table th {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-light);
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: var(--color-bg-secondary);
+}
+
+.table tbody tr:hover {
+    background-color: var(--color-bg-hover-secondary);
+}
+
+/*
+Grid
+
+Basic grid and layout components.
+
+Markup:
+<div class="row">
+  <div class="col">Column 1</div>
+  <div class="col">Column 2</div>
+</div>
+
+Styleguide Components.Grid
+*/
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.col {
+    flex: 1;
+    min-width: 0;
+}
+
+.col-1 { flex: 1; }
+.col-2 { flex: 2; }
+.col-3 { flex: 3; }
+
+.columns-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.column {
+    flex: 1;
+    min-width: 0;
+}
+
+.image-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: var(--spacing-md);
+}
+
+.action-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.sidebar-section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding-right: 5px;
+}
+
+.sidebar-title-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sidebar-title-text {
+    font-weight: inherit;
+    cursor: pointer;
+}
+
+.collapse-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-default);
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 5px;
+    line-height: 1;
+}
+
+.collapse-toggle-btn:hover {
+    color: var(--color-highlight);
+}
+
+.sidebar-section-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    max-height: 500px;
+    opacity: 1;
+    text-align: left;
+}
+
+.sidebar-section.collapsed .sidebar-section-content {
+    max-height: 0;
+    opacity: 0;
+}
+
+.sidebar-section.collapsed .sidebar-section-title {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.sidebar-section-title .collapse-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.sidebar-section-title button.save-filter-btn {
+    font-size: 0.8em;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: var(--color-primary-action);
+    color: white;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.sidebar-section-title button.save-filter-btn:hover {
+    background-color: var(--color-primary-action-hover);
+}
+
+.report-name-input {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--color-text-light);
+    background: none;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 4px;
+    padding: 5px 10px;
+    flex-grow: 1;
+    min-width: 200px;
+}
+
+.report-name-input:focus {
+    outline: none;
+    border-color: var(--color-primary-action);
+    box-shadow: 0 0 0 2px rgba(var(--color-primary-action-rgb), 0.25);
+}
+
+.report-section label {
+    color: var(--color-text-muted);
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+select.dropdown {
+    background-color: var(--color-bg-tertiary);
+    color: var(--color-text-light);
+    border: 1px solid var(--color-border-secondary);
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+select.dropdown:focus {
+    outline: none;
+    border-color: var(--color-primary-action);
+}
+
+.image-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--scaled-card-width));
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: var(--color-bg-secondary);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow-lg);
+    justify-content: center;
+}
+
+.sortable-ghost {
+    opacity: 0.4;
+    background-color: var(--color-primary-action);
+    border-color: var(--color-primary-action);
+}
+
+.upload-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(var(--color-bg-primary-rgb), 0.8);
+    z-index: 10;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-overlay.active {
+    display: flex;
+}
+
+.upload-overlay__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner {
+    border: 4px solid rgba(var(--color-text-light-rgb), 0.3);
+    border-radius: 50%;
+    border-top: 4px solid var(--color-highlight);
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: var(--spacing-xl) auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+.upload-overlay__text {
+    margin-top: var(--spacing-sm);
+    margin-bottom: 0;
+    color: var(--color-text-default);
+    font-weight: bold;
+}
+
+.gallery-container, .image-list-container {
+    position: relative;
+    user-select: none;
+}
+
+.image-card.selected {
+    border-color: var(--color-highlight);
+    box-shadow: 0 0 10px var(--color-highlight);
+}
+.image-card img {
+    transition: transform 0.3s ease;
+}
+
+.image-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+.list-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-md);
+    transition: background-color 0.2s ease, opacity 0.3s ease;
+    border: 2px solid transparent;
+}
+.list-item:hover {
+    background-color: var(--color-bg-secondary);
+}
+.list-item.selected {
+    border-color: var(--color-highlight);
+    background-color: var(--color-bg-tertiary);
+}
+
+.list-item-sort-field {
+    font-size: 1rem;
+    color: var(--color-text-default);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-list-container {
+    background-color: var(--color-bg-tertiary);
+    border-radius: var(--border-radius-md);
+    padding: 20px;
+    box-shadow: var(--box-shadow-sm);
+    margin-top: 20px;
+}
+
+.button-group-centered {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+.view-mode-buttons, .edit-mode-buttons {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    flex-wrap: wrap;
+}

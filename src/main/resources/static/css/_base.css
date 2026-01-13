@@ -1,0 +1,60 @@
+/*
+Base Styles
+
+Base styles and resets for the application. This includes global box-sizing,
+font settings, and basic styles for typography and links.
+
+Styleguide Base
+*/
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--font-size-base);
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-family-primary);
+    line-height: var(--line-height-base);
+    color: var(--color-text-default);
+    background-color: var(--color-bg-primary);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+a {
+    color: var(--color-highlight);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--color-highlight-darker);
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-light);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+/*
+Display None Utility
+
+Utility class to hide elements.
+
+Markup:
+<div class="d-none">This element is hidden.</div>
+
+Styleguide Utilities.Display
+*/
+.d-none {
+    display: none !important;
+}

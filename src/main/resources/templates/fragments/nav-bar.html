@@ -1,0 +1,103 @@
+<!-- Navbar Fragment -->
+<nav class="navbar" th:fragment="navbar" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <button class="hamburger-menu" id="hamburger-menu">
+        <span class="icon">&#9776;</span>
+    </button>
+    <div class="navbar-brand-group">
+        <a class="navbar-brand" th:href="@{/}">Tagfolio</a>
+        <span class="navbar-version" th:text="${@environment.getProperty('app.version')}"></span>
+    </div>
+
+    <div class="navbar-menu-group" th:unless="${(isUserManagementPage ?: false) or (isSettingsPage ?: false)}">
+        <div class="dropdown">
+            <button><span class="shortcut">F</span>ile</button>
+            <div class="dropdown-menu-content"> <!-- Unified class -->
+                <a href="#" id="upload-images-btn" class="menu-item" sec:authorize="hasAuthority('UPLOAD_IMAGES')">Import Images</a>
+                <a href="#" id="export-images-btn" class="menu-item">Export Images</a>
+                <a href="#" id="update-database-btn" class="menu-item" sec:authorize="hasAuthority('UPLOAD_IMAGES')">Update Database</a>
+                <a href="#" id="update-thumbnails-btn" class="menu-item" sec:authorize="hasAuthority('UPLOAD_IMAGES')">Update Thumbnails</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button><span class="shortcut">E</span>dit</button>
+            <div class="dropdown-menu-content"> <!-- Unified class -->
+                <a href="#" id="delete-selected-btn" class="menu-item disabled">Delete</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button><span class="shortcut">V</span>iew</button>
+            <div class="dropdown-menu-content"> <!-- Unified class -->
+                <a href="#" id="grid-view-btn" class="menu-item">Grid View</a>
+                <a href="#" id="list-view-btn" class="menu-item">List View</a>
+                <a href="#" id="zoom-in-btn" class="menu-item">Zoom In</a>
+                <a href="#" id="zoom-out-btn" class="menu-item">Zoom Out</a>
+                <hr class="dropdown-divider">
+                <!-- Removed Exiftool, Metadata, and Tags menu items -->
+                <div class="dropdown-submenu">
+                    <a href="#" class="menu-item">Sort &gt;</a>
+                    <div class="dropdown-submenu-content">
+                        <th:block th:each="entry : ${sortableFields}">
+                            <a href="#" class="menu-item sort-field-btn" th:data-sort-field="${entry.key}">
+                                <span th:text="${entry.key}"></span>
+                                <span class="sort-checkmark" th:data-sort-field-check="${entry.key}"></span>
+                            </a>
+                        </th:block>
+                        <hr class="dropdown-divider">
+                        <a href="#" class="menu-item sort-direction-btn" data-sort-direction="asc">
+                            <span>Ascending</span>
+                            <span class="sort-checkmark" data-sort-direction-check="asc"></span>
+                        </a>
+                        <a href="#" class="menu-item sort-direction-btn" data-sort-direction="desc">
+                            <span>Descending</span>
+                            <span class="sort-checkmark" data-sort-direction-check="desc"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button><span class="shortcut">H</span>elp</button>
+            <div class="dropdown-menu-content">
+                <a th:href="@{/help/images}" class="menu-item">Images</a>
+                <a th:href="@{/help/tags}" class="menu-item">Tags</a>
+                <a th:href="@{/help/filters}" class="menu-item">Filters</a>
+                <a th:href="@{/help/reports}" class="menu-item">Reports</a>
+            </div>
+        </div>
+        <!-- Removed Users dropdown -->
+        <!-- Removed Share menu -->
+    </div>
+
+    <div class="navbar-right-group">
+        <div sec:authorize="isAuthenticated()" class="user-profile-dropdown">
+            <a href="#" class="user-profile-toggle">
+                <div class="user-details">
+                    <strong th:text="${#authentication.name}"></strong>
+                    <small th:with="roles=${#authentication.principal.authorities.?[#this.authority.startsWith('ROLE_')]}"
+                           th:text="${#lists.isEmpty(roles) ? 'N/A' : #strings.replace(roles[0].authority, 'ROLE_', '')}"></small>
+                </div>
+            </a>
+            <ul class="dropdown-menu-content"> <!-- Unified class -->
+                <li sec:authorize="hasRole('ADMIN')"><a class="menu-item" th:classappend="${currentUri == '/users' ? 'active-user-menu' : ''}" th:href="@{/users}">Manage Users</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="menu-item" th:classappend="${currentUri == '/settings/change-password' ? 'active-user-menu' : ''}" th:href="@{/settings/change-password}">Change Password</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit" class="menu-item">Logout</button> <!-- Unified class -->
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <div sec:authorize="isAnonymous()" class="user-profile-dropdown">
+            <a href="#" class="user-profile-toggle">
+                <div class="user-details">
+                    <strong>ANONYMOUS</strong>
+                </div>
+            </a>
+            <ul class="dropdown-menu-content"> <!-- Unified class -->
+                <li><a class="menu-item" th:href="@{/login}">Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

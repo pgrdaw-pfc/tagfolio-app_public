@@ -1,0 +1,113 @@
+/*
+User List
+
+Styles for the user list page.
+
+Styleguide UserList
+*/
+
+/*
+User List Container
+
+The main container for the user list.
+
+Markup:
+<div class="user-list-container">
+  <!-- User list content -->
+</div>
+
+Styleguide UserList.Container
+*/
+.user-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-bg-tertiary);
+    border-radius: var(--border-radius-md);
+    padding: 20px;
+    box-shadow: var(--box-shadow-sm);
+    margin-top: 20px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.header-container h1 {
+    margin: 0;
+}
+
+.home-button {
+    width: auto;
+    height: auto;
+    display: inline-block;
+}
+
+.user-list-container .table th,
+.user-list-container .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/*
+User Editing
+
+Styles for editing a user in the list.
+
+Modifiers:
+.is-editing - Applied to a table row when a user is being edited.
+
+Styleguide UserList.Editing
+*/
+.user-email-edit,
+.user-roles-edit,
+.edit-actions {
+    display: none;
+}
+
+.is-editing .user-email-display,
+.is-editing .user-roles-display,
+.is-editing .default-actions {
+    display: none;
+}
+
+.is-editing .user-email-edit,
+.is-editing .user-roles-edit {
+    display: inline-block;
+}
+
+.is-editing .edit-actions {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+}
+
+.create-user-row .user-email-edit,
+.create-user-row .user-roles-edit {
+    display: inline-block;
+}
+
+.user-email-edit,
+.user-roles-edit {
+    padding: 4px;
+    border: 1px solid var(--color-border-primary);
+    border-radius: 4px;
+    width: 90%;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-default);
+}
+
+.edit-actions form {
+    display: inline;
+}
+
+.default-actions {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    white-space: nowrap;
+}

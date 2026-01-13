@@ -1,0 +1,227 @@
+/*
+Reports
+
+Specific styles for generating and displaying reports.
+
+Styleguide Reports
+*/
+
+/*
+Report Body Wrapper
+
+The main container for the report pages.
+
+Styleguide Reports.BodyWrapper
+*/
+.report-body-wrapper {
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3mm;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family-primary);
+    color: #333;
+}
+
+/*
+Report Page Container
+
+A single page within a report.
+
+Modifiers:
+.compact-page - A compact page layout.
+.extended-page - An extended page layout.
+
+Styleguide Reports.PageContainer
+*/
+.report-page-container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+    font-family: var(--font-family-primary);
+    color: #333;
+}
+
+.report-page-container.compact-page {
+    height: 100%;
+    gap: 8mm;
+    padding: var(--spacing-lg);
+    width: calc(210mm * 0.92);
+    min-height: calc(297mm * 0.94);
+}
+
+.report-page-container.extended-page {
+    justify-content: space-between;
+    padding: calc(var(--spacing-xl) * 2);
+    width: calc(210mm * 0.82);
+    min-height: calc(297mm * 0.87);
+}
+
+/*
+Product Row
+
+A row containing product information in a report.
+
+Modifiers:
+.placeholder - A placeholder row.
+
+Styleguide Reports.ProductRow
+*/
+.product-row.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    flex-basis: 0;
+    align-items: stretch;
+    page-break-inside: avoid;
+    overflow: hidden;
+    gap: 3mm;
+    box-sizing: border-box;
+    height: calc((100% - (3 * 8mm)) / 4);
+    flex-shrink: 0;
+}
+
+.product-row.placeholder {
+    visibility: hidden;
+}
+
+.product-row .col.col-1,
+.product-row .col.col-2,
+.product-row .col.col-3 {
+    flex: 0 0 calc((100% - (2 * 3mm)) / 3);
+    max-width: calc((100% - (2 * 3mm)) / 3);
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 1mm;
+}
+
+.product-row .col-1 img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+/*
+Image Section
+
+A section containing an image in a report.
+
+Styleguide Reports.ImageSection
+*/
+.image-section {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: var(--spacing-md);
+}
+
+.image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.image-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: var(--spacing-md);
+}
+
+.columns-container.row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    gap: var(--spacing-lg);
+    font-size: 0.9em;
+    box-sizing: border-box;
+}
+
+.column.col {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.footer {
+    margin-top: var(--spacing-md);
+    font-size: 0.8em;
+    flex-shrink: 0;
+}
+
+.title-row {
+    font-size: 10pt;
+    font-weight: bold;
+    margin-bottom: var(--spacing-xs);
+    padding: 0;
+    width: 100%;
+}
+
+.caracteristicas {
+    margin-bottom: auto;
+}
+
+.metadata-item {
+    margin-bottom: var(--spacing-xs);
+    font-size: 8pt;
+}
+
+.description p,
+.notes p {
+    margin: 0;
+    font-size: 7pt;
+    line-height: 1.3;
+}
+
+.web-link {
+    width: 100%;
+    text-align: left;
+    font-size: 8pt;
+    margin-top: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.web-link a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*
+Image Item
+
+An item containing an image and controls.
+
+Styleguide Reports.ImageItem
+*/
+.image-item {
+    border: 1px solid var(--color-border-primary);
+    margin: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+
+.image-item img {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.image-controls button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.image-controls button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}

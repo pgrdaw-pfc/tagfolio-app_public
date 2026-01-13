@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Tagfolio</title>
+    <link rel="stylesheet" th:href="@{/css/_variables.css}">
+    <link rel="stylesheet" th:href="@{/css/_base.css}">
+    <link rel="stylesheet" th:href="@{/css/_components.css}">
+    <link rel="stylesheet" th:href="@{/css/_responsive.css}">
+    <style>
+        .license-link {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="auth-container">
+        <div class="card">
+            <h1 class="card-title">Welcome to Tagfolio</h1>
+            <p class="card-subtitle">Organize, showcase, and share your projects with ease.</p>
+
+            <div class="btn-group">
+                <form th:action="@{/login}" method="get" style="display:inline;">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <form th:action="@{/register}" method="get" style="display:inline;">
+                    <button type="submit" class="btn btn-secondary">Sign up</button>
+                </form>
+            </div>
+
+            <div class="license-link">
+                <a th:href="@{/license}">License</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

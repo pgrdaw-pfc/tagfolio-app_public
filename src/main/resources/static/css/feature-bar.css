@@ -1,0 +1,297 @@
+/*
+Feature Bar
+
+Shared styles for the top filter and report bars.
+
+Styleguide FeatureBar
+*/
+
+/*
+Feature Bar
+
+The main container for the feature bar.
+
+Markup:
+<div class="feature-bar">
+  <div class="feature-bar__main-column">
+    <!-- Main content -->
+  </div>
+  <div class="feature-bar__secondary-column">
+    <!-- Secondary content -->
+  </div>
+</div>
+
+Styleguide FeatureBar.Bar
+*/
+.feature-bar {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-primary);
+    flex-shrink: 0;
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+}
+
+.feature-bar__main-column {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.feature-bar__secondary-column {
+    flex-shrink: 0;
+    width: 200px;
+    background-color: var(--color-bg-tertiary);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-sm);
+    overflow-y: auto;
+    max-height: 150px;
+    box-shadow: var(--box-shadow-sm);
+}
+
+/*
+Feature Bar Section
+
+A section within the feature bar.
+
+Markup:
+<div class="feature-bar__section">
+  <div class="feature-bar__header">
+    <h3 class="feature-bar__title">Section Title</h3>
+  </div>
+  <div class="feature-bar__content-area">
+    <!-- Content -->
+  </div>
+</div>
+
+Styleguide FeatureBar.Section
+*/
+.feature-bar__section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    border-radius: var(--border-radius-md);
+}
+
+.feature-bar__header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    align-items: center;
+    margin-bottom: var(--spacing-xs);
+}
+
+.feature-bar__title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-text-light);
+    margin: 0;
+}
+
+.feature-bar__controls {
+    display: flex;
+    flex-grow: 1;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.feature-bar__input,
+.feature-bar__select {
+    flex-grow: 1;
+    padding: 0.3rem 0.7rem;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-default);
+    border: 1px solid var(--color-border-primary);
+    border-radius: var(--border-radius-pill);
+    font-size: 0.85rem;
+    line-height: 1.2;
+    outline: none;
+    font-family: var(--font-family-primary);
+    min-width: 120px;
+}
+
+.feature-bar__select {
+    flex-grow: 0;
+    width: auto;
+}
+
+.feature-bar__input:focus,
+.feature-bar__select:focus {
+    border-color: var(--color-highlight);
+}
+
+.feature-bar__action-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: flex-end;
+}
+
+.feature-bar__content-area, .sidebar__section-content-area {
+    margin-bottom: var(--spacing-xs);
+    background-color: var(--color-bg-primary);
+    border: 1px solid var(--color-border-primary);
+    padding: 1rem;
+    min-height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-md);
+    overflow: visible;
+}
+
+/*
+Report Image Thumbnail
+
+A thumbnail image for a report.
+
+.selected - Indicates the thumbnail is selected.
+
+Markup:
+<div class="report-image-thumbnail">
+  <img src="..." alt="Thumbnail">
+</div>
+
+Styleguide FeatureBar.ReportImageThumbnail
+*/
+.report-image-thumbnail {
+    position: relative;
+    width: calc(var(--scaled-card-width)/2);
+    height: calc(var(--scaled-card-width)/2);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    flex-shrink: 0;
+    border: 1px solid var(--color-border-secondary);
+}
+
+.report-image-thumbnail.selected {
+    border-color: var(--color-highlight);
+    box-shadow: 0 0 5px var(--color-highlight);
+}
+
+.report-image-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*
+Filter Controls
+
+Controls for filtering content.
+
+Styleguide FeatureBar.FilterControls
+*/
+.filter-controls-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    align-items: center;
+    flex-grow: 1;
+}
+
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    align-items: center;
+    flex-grow: 1;
+}
+
+.filter-controls .operator-buttons,
+.filter-controls .parenthesis-buttons,
+.filter-controls .comparator-buttons,
+.filter-controls .comparator-fields {
+    display: flex;
+    gap: 2px;
+}
+
+#new-filter-input {
+    box-sizing: border-box;
+    padding: 0.3rem 0.7rem;
+    background-color: var(--color-border-primary);
+    color: var(--color-text-default);
+    border-radius: var(--border-radius-pill);
+    font-size: 0.85rem;
+    line-height: 1.2;
+    border: 1px dashed var(--color-text-muted);
+    outline: none;
+    font-family: var(--font-family-primary);
+    width: 100px;
+    transition: border-color 0.2s ease;
+}
+
+#new-filter-input:focus {
+    border-color: var(--color-highlight);
+}
+
+#new-filter-input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 1;
+}
+
+.sidebar__section-content-area .autocomplete-input-wrapper {
+    display: inline-flex;
+    width: auto;
+    align-items: center;
+}
+
+/*
+Filter Badge
+
+A badge representing a filter element.
+
+.tag - A tag filter.
+.operator - An operator filter.
+.parenthesis - A parenthesis filter.
+.comparator - A comparator filter.
+.field - A field filter.
+.value - A value filter.
+
+Markup:
+<span class="filter-badge tag">Tag</span>
+<span class="filter-badge operator">AND</span>
+
+Styleguide FeatureBar.FilterBadge
+*/
+.filter-badge {
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--border-radius-pill);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.filter-badge.tag {
+    background-color: var(--color-border-primary);
+    color: var(--color-text-default);
+}
+
+.filter-badge.operator {
+    background-color: #87ceeb;
+    color: var(--color-bg-primary);
+}
+
+.filter-badge.parenthesis {
+    background-color: #98c379;
+    color: var(--color-bg-primary);
+}
+
+.filter-badge.comparator {
+    background-color: var(--color-success);
+    color: var(--color-success-text);
+}
+
+.filter-badge.field,
+.filter-badge.comparator-field {
+    background-color: var(--color-warning);
+    color: var(--color-warning-text);
+}
+
+.filter-badge.value {
+    background-color: #6f42c1;
+    color: white;
+}

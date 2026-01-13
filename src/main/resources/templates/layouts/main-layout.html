@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title th:text="${pageTitle != null ? pageTitle : 'Tagfolio'}">Tagfolio</title>
+
+    <!-- Favicon -->
+    <link rel="icon" th:href="@{/favicon.ico}" sizes="any">
+    <link rel="icon" th:href="@{/favicon.svg}" type="image/svg+xml">
+    <link rel="apple-touch-icon" th:href="@{/apple-touch-icon.png}">
+
+    <!-- New CSS Files -->
+    <link rel="stylesheet" th:href="@{/css/_variables.css}">
+    <link rel="stylesheet" th:href="@{/css/_base.css}">
+    <link rel="stylesheet" th:href="@{/css/_components.css}">
+    <link rel="stylesheet" th:href="@{/css/_layout.css}">
+    <link rel="stylesheet" th:href="@{/css/_responsive.css}">
+    <link rel="stylesheet" th:href="@{/css/image_gallery.css}">
+    <link rel="stylesheet" th:href="@{/css/feature-bar.css}">
+    <link rel="stylesheet" th:href="@{/css/help.css}">
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        window.isAnonymous = /*[[${#authentication.principal == 'anonymousUser'}]]*/ true;
+        /*]]>*/
+    </script>
+</head>
+
+<body>
+
+<div class="top-bar">
+    <div th:replace="~{fragments/nav-bar :: navbar}"></div>
+</div>
+
+<div class="app-layout">
+    <div class="app-workspace">
+        <div class="workspace-body">
+            <!-- Main Content Area -->
+            <div class="main-content__area" id="main-content-area">
+                <div layout:fragment="content">
+                    <!-- Content will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Alert Container -->
+    <div id="global-alert-container">
+        <div th:if="${globalSuccessMessage}" class="alert alert-success">
+            <p th:text="${globalSuccessMessage}"></p>
+        </div>
+        <div th:if="${globalErrorMessage}" class="alert alert-error">
+            <p th:text="${globalErrorMessage}"></p>
+        </div>
+    </div>
+</div>
+
+<!-- Core Libraries -->
+<script th:src="@{/js/core/globals.js}"></script>
+<script th:src="@{/js/core/api.js}"></script>
+<script th:src="@{/js/ui/alerts.js}"></script>
+<script th:src="@{/js/ui/dropdown.js}"></script>
+<script th:src="@{/js/ui/navbar.js}"></script>
+
+</body>
+</html>

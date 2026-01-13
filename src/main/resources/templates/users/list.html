@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/app}">
+<head>
+    <title>User Management</title>
+    <link rel="stylesheet" th:href="@{/css/users-list.css}">
+    <link rel="stylesheet" th:href="@{/css/feature-bar.css}">
+</head>
+<body>
+<div layout:fragment="content" class="content-container">
+    <div class="header-container">
+        <a th:href="@{/}" class="btn btn-secondary home-button" title="Gallery">Gallery</a>
+        <h1>User Management</h1>
+    </div>
+
+    <div class="user-list-container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Create New User Row -->
+            <tr class="create-user-row">
+                <td>New</td>
+                <td>
+                    <form th:action="@{/users/inline-create}" method="post" id="create-user-form">
+                        <input type="email" name="email" placeholder="New user email" required class="user-email-edit" style="display: inline-block;">
+                    </form>
+                </td>
+                <td>
+                    <select name="roleType" form="create-user-form" class="user-roles-edit" style="display: inline-block;">
+                        <option th:each="role : ${roleTypes}"
+                                th:value="${role}"
+                                th:text="${role}"
+                                th:selected="${role.name() == 'USER'}"></option>
+                    </select>
+                </td>
+                <td class="action-buttons">
+                    <button type="submit" form="create-user-form" class="btn btn--compact btn-action">Create</button>
+                </td>
+            </tr>
+
+            <!-- Existing users -->
+            <tr th:each="user : ${users}" th:id="'user-row-' + ${user.id}">
+                <td th:text="${user.id}"></td>
+                <td>
+                    <span class="user-email-display" th:text="${user.email}"></span>
+                    <input type="email" class="user-email-edit" th:value="${user.email}" required>
+                </td>
+                <td>
+                    <span class="user-roles-display">
+                        <span th:each="role, iterStat : ${user.roles}">
+                            <span th:text="${role.name}"></span><span th:if="${!iterStat.last}">, </span>
+                        </span>
+                    </span>
+                    <select class="user-roles-edit">
+                        <option th:each="role : ${roleTypes}"
+                                th:value="${role}"
+                                th:text="${role}"></option>
+                    </select>
+                </td>
+                <td class="action-buttons">
+                    <div class="default-actions">
+                        <button type="button" class="btn btn--compact btn-action edit-user-button" th:data-user-id="${user.id}">Edit</button>
+                        <form th:action="@{/users/delete/{id}(id=${user.id})}" method="post" class="delete-form" style="display:inline;">
+                            <button type="submit" class="btn btn--compact btn-action">Delete</button>
+                        </form>
+                    </div>
+                    <div class="edit-actions">
+                        <form th:action="@{/users/inline-update/{id}(id=${user.id})}" method="post" class="inline-update-form">
+                            <input type="hidden" name="email" class="edit-email-input">
+                            <input type="hidden" name="roleType" class="edit-role-input">
+                            <button type="submit" class="btn btn--compact btn-action">Save</button>
+                        </form>
+                        <button type="button" class="btn btn--compact btn-action cancel-edit-button" th:data-user-id="${user.id}">Cancel</button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script th:src="@{/js/users-list.js}"></script>
+</body>
+</html>

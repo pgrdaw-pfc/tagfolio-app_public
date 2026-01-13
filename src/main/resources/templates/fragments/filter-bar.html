@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+    <div th:fragment="top-bar-filter" class="top-bar--two-column d-none" id="top-bar-filters" data-section-id="filters" th:unless="${(isUserManagementPage ?: false) or (isSettingsPage ?: false)}">
+        <div class="top-bar__secondary-column-wrapper">
+            <div class="sidebar__section top-bar__secondary-column">
+                <h3 class="sidebar__section-title">Filters</h3>
+                <div class="sidebar-scroll-container">
+                    <ul id="filter-list" class="badge-list">
+                        <!-- Saved filters will be listed here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar__section top-bar__main-column">
+            <div class="sidebar__section-header">
+                <div class="sidebar__section-controls">
+                    <div class="autocomplete-input-wrapper combobox" style="flex-grow: 1;">
+                        <input type="text" id="filter-name-input" class="sidebar__section-input" placeholder="Filter Name" aria-label="Filter Name">
+                        <span class="autocomplete-arrow">&#9662;</span>
+                        <div class="autocomplete-dropdown"></div>
+                    </div>
+                </div>
+                <div class="sidebar__section-action-buttons action-buttons" id="filters-action-buttons">
+                    <button id="clear-filter-btn" class="btn btn--compact btn-action">Clear</button>
+                    <button id="add-selected-tags-btn" class="btn btn--compact btn-action">Add</button>
+                    <th:block sec:authorize="isAuthenticated()">
+                        <button id="save-filter-btn" class="btn btn--compact btn-action" disabled>Save</button>
+                        <button id="share-filter-bar-btn" class="btn btn--compact btn-action" disabled>Share</button>
+                    </th:block>
+                </div>
+            </div>
+
+            <div id="filter-expression-container" class="sidebar__section-content-area">
+                <!-- Filter expression badges will be dynamically added here -->
+                <div class="autocomplete-input-wrapper" style="display: inline-block; width: auto;">
+                    <input type="text" id="new-filter-input" class="tag-input-new" placeholder="search..." aria-label="Search for a new filter">
+                    <div class="autocomplete-dropdown"></div>
+                </div>
+            </div>
+
+            <div class="filter-controls-wrapper">
+                <div class="filter-controls action-buttons">
+                    <div class="parenthesis-buttons">
+                        <button class="parenthesis-btn btn btn--compact btn-action" data-p="(" draggable="true">(</button>
+                        <button class="parenthesis-btn btn btn--compact btn-action" data-p=")" draggable="true">)</button>
+                    </div>
+                    <div class="operator-buttons">
+                        <button class="operator-btn btn btn--compact btn-action" data-op="AND" draggable="true">AND</button>
+                        <button class="operator-btn btn btn--compact btn-action" data-op="OR" draggable="true">OR</button>
+                        <button class="operator-btn btn btn--compact btn-action" data-op="NOT" draggable="true">NOT</button>
+                    </div>
+                    <div class="comparator-buttons">
+                        <button class="comparator-btn btn btn--compact btn-action" data-comp="<" title="Comparator: less than"
+                                draggable="true"><
+                        </button>
+                        <button class="comparator-btn btn btn--compact btn-action" data-comp=">" title="Comparator: greater than"
+                                draggable="true">>
+                        </button>
+                        <button class="comparator-btn btn btn--compact btn-action" data-comp="=" title="Comparator: equals"
+                                draggable="true">=
+                        </button>
+                    </div>
+                    <div class="comparator-fields">
+                        <button class="comparator-field-btn btn btn--compact btn-action" data-field="Rating" draggable="true">RATING</button>
+                        <button class="comparator-field-btn btn btn--compact btn-action" data-field="Created" draggable="true">CREATED</button>
+                        <button class="comparator-field-btn btn btn--compact btn-action" data-field="Modified" draggable="true">MODIFIED</button>
+                        <button class="comparator-field-btn btn btn--compact btn-action" data-field="Imported" draggable="true">IMPORTED</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

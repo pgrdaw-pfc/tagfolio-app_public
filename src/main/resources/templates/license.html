@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>License - Tagfolio</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" th:href="@{/css/_variables.css}">
+    <link rel="stylesheet" th:href="@{/css/_base.css}">
+    <link rel="stylesheet" th:href="@{/css/_components.css}">
+    <link rel="stylesheet" th:href="@{/css/_responsive.css}">
+
+    <style>
+        body {
+            overflow-y: auto; /* Allow scrolling */
+        }
+        .license-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: var(--spacing-xl);
+            min-height: 100vh;
+        }
+        .license-container {
+            max-width: 800px;
+            width: 100%;
+            background-color: var(--color-bg-secondary);
+            border: 1px solid var(--color-border-primary);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--box-shadow-md);
+            padding: 2rem;
+            color: var(--color-text-default);
+            height: fit-content;
+        }
+        .license-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-light);
+            text-align: center;
+        }
+        .license-content {
+            line-height: 1.6;
+        }
+        .license-content h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-light);
+        }
+        .license-content ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .license-content li {
+            margin-bottom: 0.5rem;
+        }
+        .license-footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            border-top: 1px solid var(--color-border-primary);
+            padding-top: 1rem;
+        }
+        .license-footer a {
+            color: var(--color-highlight);
+        }
+        .license-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            gap: 0.2em;
+        }
+        .back-link {
+            display: block;
+            margin-bottom: 1rem;
+            color: var(--color-text-muted);
+            text-decoration: none;
+        }
+        .back-link:hover {
+            color: var(--color-highlight);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="license-wrapper">
+    <div class="license-container">
+        <a th:href="@{/}" class="back-link">&larr; Back to Home</a>
+
+        <h1 class="license-title">License</h1>
+
+        <div class="license-content">
+            <p><strong>Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</strong></p>
+
+            <p>This license allows you to copy, redistribute, adapt, and modify the content of the documentation in any medium or format, provided that the following conditions are met:</p>
+
+            <ul>
+                <li><strong>Attribution (BY):</strong> You must give appropriate credit, provide a link to the license, and indicate if changes were made.</li>
+                <li><strong>NonCommercial (NC):</strong> You may not use the material for commercial purposes.</li>
+                <li><strong>ShareAlike (SA):</strong> If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.</li>
+                <li><strong>No additional restrictions:</strong> You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.</li>
+            </ul>
+
+            <p>The license gives no warranties and may be subject to other legal limitations, such as privacy, publicity, or moral rights.</p>
+            <p>The full text of the license can be consulted at the following official link:<br>
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
+        </div>
+
+        <div class="license-footer">
+            <div class="license-icons">
+                <a href="https://tagfolio.com">Tagfolio</a> © 2025 by <a href="https://example.com">Pablo Gimeno Ramallo</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+                <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="CC" style="max-width: 1em;max-height:1em;margin-left: .2em;">
+                <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="BY" style="max-width: 1em;max-height:1em;margin-left: .2em;">
+                <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="NC" style="max-width: 1em;max-height:1em;margin-left: .2em;">
+                <img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="SA" style="max-width: 1em;max-height:1em;margin-left: .2em;">
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

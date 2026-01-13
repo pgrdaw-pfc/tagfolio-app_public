@@ -1,0 +1,53 @@
+/*
+Print Styles
+
+Hides UI elements and styles reports for printing. This ensures that only the
+report content is visible and formatted for a printed page.
+
+Styleguide Print
+*/
+
+@media print {
+    /* Hide all non-essential UI elements */
+    .top-bar,
+    .buttons-sidebar,
+    .contents-sidebar,
+    .contents-topbar,
+    .footer,
+    .navigation-bar,
+    .image-controls,
+    .badge-button,
+    .report-type-selector,
+    .report-display-container .report-name-input,
+    .report-display-container .dropdown,
+    .report-display-container label,
+    h2[style*="color: var(--color-text-light)"] {
+        display: none !important;
+    }
+
+    /* Ensure the main content area takes up the full page */
+    body, .app-layout, .app-workspace, .workspace-body, .main-content__area {
+        display: block;
+        margin: 0;
+        padding: 0;
+        height: auto;
+        overflow: visible;
+        background-color: #fff;
+        color: #000;
+    }
+
+    /* Ensure the report itself is what's visible */
+    .report-body-wrapper {
+        display: block;
+    }
+
+    .report-page-container {
+        box-shadow: none;
+        border: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        page-break-after: always;
+    }
+}

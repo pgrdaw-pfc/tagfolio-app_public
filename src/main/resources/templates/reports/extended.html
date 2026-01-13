@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${report.name} + ' (Extended)'"></title>
+    <!-- Link _variables.css first to ensure CSS variables are defined -->
+    <link rel="stylesheet" th:href="@{/css/_variables.css}">
+    <link rel="stylesheet" th:href="@{/css/reports.css}">
+</head>
+<body>
+    <div th:each="reportImage : ${report.reportImages}" class="page report-page-container extended-page" th:with="rawMetadata=${metadataService.getRawMetadata(reportImage.image)}">
+        <div class="image-section">
+            <img th:src="@{'/images/original/' + ${reportImage.image.id}}" th:alt="${metadataService.getMetadataValue('Titulo', rawMetadata) != null ? metadataService.getMetadataValue('Titulo', rawMetadata) : 'Image'}"/>
+        </div>
+
+        <div class="image-title" th:if="${metadataService.getMetadataValue('Titulo', rawMetadata) != null and not #strings.isEmpty(metadataService.getMetadataValue('Titulo', rawMetadata))}">
+            <span th:text="${metadataService.getMetadataValue('Titulo', rawMetadata)}"></span>
+        </div>
+
+        <div class="columns-container">
+            <div class="column">
+                <div class="metadata-item" th:each="i : ${#numbers.sequence(0, 9)}" th:with="val=${metadataService.getMetadataValue('Datos' + i, rawMetadata)}">
+                    <th:block th:if="${val != null and not #strings.isEmpty(val)}">
+                        <th:block th:if="${#strings.contains(val, ':')}">
+                            <strong><span th:text="${#strings.substringBefore(val, ':')}"></span>:</strong>
+                            <span th:text="${#strings.substringAfter(val, ':')}"></span>
+                        </th:block>
+                        <th:block th:if="${not #strings.contains(val, ':')}">
+                            <span th:text="${val}"></span>
+                        </th:block>
+                    </th:block>
+                </div>
+            </div>
+            <div class="column">
+                <div class="description" th:if="${metadataService.getMetadataValue('Descripcion', rawMetadata) != null and not #strings.isEmpty(metadataService.getMetadataValue('Descripcion', rawMetadata))}">
+                    <strong>Descripción:</strong>
+                    <p th:text="${metadataService.getMetadataValue('Descripcion', rawMetadata)}"></p>
+                </div>
+                <div class="notes" th:if="${metadataService.getMetadataValue('Notas', rawMetadata) != null and not #strings.isEmpty(metadataService.getMetadataValue('Notas', rawMetadata))}">
+                    <p th:text="${metadataService.getMetadataValue('Notas', rawMetadata)}"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer web-link" th:if="${metadataService.getMetadataValue('Web', rawMetadata) != null and not #strings.isEmpty(metadataService.getMetadataValue('Web', rawMetadata))}">
+            <a th:href="${metadataService.getMetadataValue('Web', rawMetadata)}" th:text="${metadataService.getMetadataValue('Web', rawMetadata)}" target="_blank"></a>
+        </div>
+    </div>
+</body>
+</html>

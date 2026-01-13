@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main-layout}">
+<head>
+    <title>Help - Filters</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container help-container">
+        <h1 class="help-title" id="top">Help: Filters</h1>
+        <p class="help-lead">This section provides help regarding filters.</p>
+
+        <div class="help-index mb-5">
+            <h4>Contents</h4>
+            <ul>
+                <li><a href="#add-tag-filter">Adding a Tag to a Filter</a></li>
+                <li><a href="#drag-tags">Dragging Tags to a Filter</a></li>
+                <li><a href="#filter-operators">Adding Filter Operators</a></li>
+                <li><a href="#save-filters">Saving Filters</a></li>
+                <li><a href="#load-filters">Loading Saved Filters</a></li>
+                <li><a href="#share-filters">Sharing Filters</a></li>
+                <li><a href="#copy-link">Copying Filter Link</a></li>
+                <li><a href="#view-shared">Viewing Shared Filters</a></li>
+                <li><a href="#clear-filters">Clearing Filters</a></li>
+            </ul>
+        </div>
+
+        <!-- filters-add-tag.png -->
+        <div class="help-section" id="add-tag-filter">
+            <h3>Adding a Tag to a Filter</h3>
+            <p>Filter your images by specific tags to find exactly what you're looking for.</p>
+            <img th:src="@{/img/help/filters-add-tag.png}" class="help-image" alt="Adding a Tag Filter">
+            <p>To add a tag to a filter:</p>
+            <ol>
+                <li>Open the Filter topbar panel.</li>
+                <li>Select a tag from the dropdown list or type to search.</li>
+                <li>Click Add to add the tag at the end of the filter expression</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- filters-drag-tag.png -->
+        <div class="help-section" id="drag-tags">
+            <h3>Dragging Tags to Filter</h3>
+            <p>You can intuitively build filters by dragging tags from the sidebar.</p>
+            <img th:src="@{/img/help/filters-drag-tag.png}" class="help-image" alt="Dragging Tags to Filter">
+            <p>To use drag-and-drop filtering:</p>
+            <ol>
+                <li>Locate a tag in the Tags sidebar.</li>
+                <li>Click and drag the tag to the filter area at the top.</li>
+                <li>Drop it to apply the filter immediately.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- filters-drag-operator.png -->
+        <div class="help-section" id="filter-operators">
+            <h3>Using Filter Operators</h3>
+            <p>Combine multiple filters using logical operators like AND, OR, and NOT.</p>
+            <img th:src="@{/img/help/filters-drag-operator.png}" class="help-image" alt="Using Filter Operators">
+            <p>To use operators:</p>
+            <ol>
+                <li>Add multiple tags to the filter bar.</li>
+                <li>Drag operator blocks between the tags to define the logic.</li>
+                <li>Arrange them to create complex queries.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- filters-save.png -->
+        <div class="help-section" id="save-filters">
+            <h3>Saving Filters</h3>
+            <p>Save your complex filter combinations for quick access later.</p>
+            <img th:src="@{/img/help/filters-save.png}" class="help-image" alt="Saving Filters">
+            <p>To save a filter:</p>
+            <ol>
+                <li>Construct your desired filter in the filter bar.</li>
+                <li>Give your filter a name.</li>
+                <li>Click the "Save" icon on the right side of the filter bar and confirm.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- filters-load.png -->
+        <div class="help-section" id="load-filters">
+            <h3>Loading Saved Filters</h3>
+            <p>Quickly apply a previously saved filter configuration.</p>
+            <img th:src="@{/img/help/filters-load.png}" class="help-image" alt="Loading Saved Filters">
+            <p>To load a saved filter you can choose three different methods:</p>
+            <ol>
+                <li>Double-click on the desired filter in the side panel.</li>
+                <li>Drag the desired filter from the side panel to the filter expression.</li>
+                <li>Select the desired filter in the filter dropdown.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- filters-share.png -->
+        <div class="help-section" id="share-filters">
+            <h3>Sharing Filters</h3>
+            <p>Share your current filter configuration with others via a link.</p>
+            <img th:src="@{/img/help/filters-share.png}" class="help-image" alt="Sharing Filters">
+            <p>To share a filter:</p>
+            <ol>
+                <li>Set up the filter you want to share.</li>
+                <li>Click the "Share" button in the filter toolbar.</li>
+                <li>A unique link is generated and copied in the clipboard.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- filters-copy-link.png -->
+        <div class="help-section" id="copy-link">
+            <h3>Copying Filter Link</h3>
+            <p>Copy the generated link to your clipboard to share it easily.</p>
+            <img th:src="@{/img/help/filters-copy-link.png}" class="help-image" alt="Copying Filter Link">
+            <p>To copy the link:</p>
+            <ol>
+                <li>Find your shared filter in the sidebar.</li>
+                <li>Click the "Share" button next to the filter name to copy the URL in the clipboard.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- filters-shared.png -->
+        <div class="help-section" id="view-shared">
+            <h3>Viewing Shared Filters</h3>
+            <p>Anonymous and registered users can see the collection generated with a shared filter.</p>
+            <img th:src="@{/img/help/filters-shared.png}" class="help-image" alt="Viewing Shared Filters">
+            <p>To see a shared filter:</p>
+            <ol>
+                <li>Copy the URL in the clipboard as explained <a href="#copy-link">before</a>.</li>
+                <li>Paste it in the browser.</li>
+                <li>You will only see the images matching the filter criteria.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+        <!-- filters-clear.png -->
+        <div class="help-section" id="clear-filters">
+            <h3>Clearing Filters</h3>
+            <p>Reset the view to show all images by clearing the current filters.</p>
+            <img th:src="@{/img/help/filters-clear.png}" class="help-image" alt="Clearing Filters">
+            <p>To clear filters:</p>
+            <ol>
+                <li>Click on "Clear" in the filter action buttons.</li>
+            </ol>
+            <a href="#top" class="back-to-top">Back to top &uarr;</a>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
